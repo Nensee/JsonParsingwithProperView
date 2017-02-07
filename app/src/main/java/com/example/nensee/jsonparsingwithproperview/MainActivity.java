@@ -3,6 +3,7 @@ package com.example.nensee.jsonparsingwithproperview;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -642,13 +643,17 @@ public class MainActivity extends AppCompatActivity {
             p.setTitle("title");
             p.setDescription("body");
             postArrayList.add(p);
+
+            ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(postArrayList);
+            ListView listView=(ListView)findViewById(R.id.list_view);
+            listView.setAdapter(arrayAdapter);
+
         }
         catch (JSONException e)
         {
             e.printStackTrace();
         }
     }
-    ListView listView=(ListView)findViewById(R.id.list_view);
 
 
     //JsonObjectdemo jsonObjectdemo=new JsonObjectdemo();
