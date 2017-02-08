@@ -12,10 +12,9 @@ import java.util.ArrayList;
  */
 public class Post
 {
-    private String userid;
-    private String id;
-    private String title;
-    private String description;
+    String userid;
+    String id;
+    String title,description;
 
     Context context;
     LayoutInflater inflater;
@@ -54,4 +53,7 @@ public class Post
     public void setDescription(String description) {
         this.description = description;
     }
+
+
+
 }

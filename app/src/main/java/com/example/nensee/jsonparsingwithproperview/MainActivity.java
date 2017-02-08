@@ -3,8 +3,10 @@ package com.example.nensee.jsonparsingwithproperview;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import java.util.ArrayList;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -617,10 +619,23 @@ public class MainActivity extends AppCompatActivity {
             "  }\n" +
             "]";
 
+    int userId,id;
+    String title,body;
+
+    ListView listView;
+
+    JsonObjectdemo jsonObjectdemo;
+
+    ArrayList<Post> postArrayList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        listView = (ListView) findViewById(R.id.list_view);
+
+        ParseJson();
     }
     public void ParseJson(){
         try
@@ -634,19 +649,18 @@ public class MainActivity extends AppCompatActivity {
                 jsonObject.getString("Id");
                 jsonObject.getString("title");
                 jsonObject.getString("body");
+
+                Post p=new Post();
+                p.setId("id");
+                p.setUserid("userId");
+                p.setTitle("title");
+                p.setDescription("body");
+                postArrayList.add(p);
             }
-            ArrayList<Post> postArrayList=new ArrayList<>();
 
-            Post p=new Post();
-            p.setId("id");
-            p.setUserid("userId");
-            p.setTitle("title");
-            p.setDescription("body");
-            postArrayList.add(p);
+            jsonObjectdemo=new JsonObjectdemo(this,postArrayList);
 
-            ArrayAdapter<String> arrayAdapter=new ArrayAdapter<String>(postArrayList);
-            ListView listView=(ListView)findViewById(R.id.list_view);
-            listView.setAdapter(arrayAdapter);
+            listView.setAdapter(jsonObjectdemo);
 
         }
         catch (JSONException e)
@@ -656,6 +670,5 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //JsonObjectdemo jsonObjectdemo=new JsonObjectdemo();
 
 }
