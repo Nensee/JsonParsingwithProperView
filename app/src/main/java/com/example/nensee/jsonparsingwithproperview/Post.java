@@ -16,9 +16,6 @@ public class Post
     String id;
     String title,description;
 
-    Context context;
-    LayoutInflater inflater;
-    ArrayList<Post> posts;
 
 
 

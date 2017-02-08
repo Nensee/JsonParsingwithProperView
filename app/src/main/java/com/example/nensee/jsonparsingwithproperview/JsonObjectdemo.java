@@ -36,7 +36,7 @@ public class JsonObjectdemo extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return position;
+        return posts.get(position);
     }
 
     @Override
@@ -51,8 +51,7 @@ public class JsonObjectdemo extends BaseAdapter {
         TextView tile;
         TextView desc;
     }
-    ViewHolder holder=new ViewHolder();
-    LayoutInflater inflater;
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -60,13 +59,12 @@ public class JsonObjectdemo extends BaseAdapter {
 
         if(convertView==null) {
             holder = new ViewHolder();
-            inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-            View view = LayoutInflater.from(context).inflate(R.layout.listview, parent, false);
-            holder.uid = (TextView) view.findViewById(R.id.txtviw1);
-            holder.iid = (TextView) view.findViewById(R.id.txtviw2);
-            holder.tile = (TextView) view.findViewById(R.id.txtviw3);
-            holder.desc = (TextView) view.findViewById(R.id.txtviw4);
+            convertView = LayoutInflater.from(context).inflate(R.layout.listview, parent, false);
+            holder.uid = (TextView) convertView.findViewById(R.id.txtviw1);
+            holder.iid = (TextView) convertView.findViewById(R.id.txtviw2);
+            holder.tile = (TextView) convertView.findViewById(R.id.txtviw3);
+            holder.desc = (TextView) convertView.findViewById(R.id.txtviw4);
 
             convertView.setTag(holder);
         }
